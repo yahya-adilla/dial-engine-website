@@ -1,360 +1,660 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIAL ENGINE™ | Sales Automation Center</title>
-    <style>
-        /* --- VISTA AURORA AESTHETIC --- */
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background: #025968;
-            background: linear-gradient(135deg, #013a52 0%, #037d8a 50%, #68a834 100%);
-            background-attachment: fixed;
-            color: #111827;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZLF Systems | Dial Engine™</title>
+<style>
+/* ============================================================
+   FRUTIGER AERO / VISTA AURORA — ZLF SYSTEMS
+   ============================================================ */
 
-        /* --- GLOSSY HEADER NAVIGATION --- */
-        header {
-            position: fixed; top: 0; left: 0; right: 0; height: 75px;
-            background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.5) 100%);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,1);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 50px; z-index: 1000;
-        }
-        .logo { font-size: 1.6rem; font-weight: 800; letter-spacing: 1px; color: #003366; text-shadow: 0 1px 1px #fff; }
-        .nav-links { display: flex; align-items: center; }
-        .nav-links a {
-            text-decoration: none; color: #111; font-weight: 600; font-size: 0.95rem;
-            margin-left: 30px; text-shadow: 0 1px 0 rgba(255,255,255,0.5); transition: color 0.2s;
-            font-family: inherit;
-        }
-        .nav-links a:hover { color: #005a9e; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            padding: 160px 50px 80px 50px; max-width: 1200px; margin: 0 auto;
-            display: flex; align-items: center; gap: 50px;
-        }
-        .hero-text { flex: 1; }
-        .hero-title {
-            font-size: 3.5rem; font-weight: 800; letter-spacing: -1px; margin: 0 0 15px 0;
-            color: #ffffff; text-shadow: 0 2px 5px rgba(0,0,0,0.4); line-height: 1.1;
-        }
-        .hero-subtitle { 
-            font-size: 1.25rem; color: #f0f8ff; font-weight: 600; margin-bottom: 30px; 
-            max-width: 550px; text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-        }
-        .hero-actions { display: flex; gap: 15px; align-items: center; }
-        
-        .hero-image-container { flex: 1; text-align: right; }
-        .hero-image { width: 100%; max-width: 500px; filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5)); }
+:root {
+    --teal-deep:   #013a52;
+    --teal-mid:    #037d8a;
+    --green-burst: #68a834;
+    --green-vivid: #1aa86b;
+    --navy:        #003366;
+    --blue-mid:    #004b87;
+    --blue-link:   #005a9e;
+    --glass-white: rgba(255,255,255,0.88);
+    --glass-mid:   rgba(255,255,255,0.50);
+    --glass-low:   rgba(255,255,255,0.30);
+    --shadow-deep: rgba(0,30,60,0.42);
+}
 
-        /* --- MIRROR EDGE GLASS PANELS --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 50px 80px 50px; }
-        
-        .glass-panel {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.45) 100%);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-radius: 6px;
-            border-top: 2px solid rgba(255, 255, 255, 1);
-            border-left: 1px solid rgba(255, 255, 255, 0.9);
-            border-right: 1px solid rgba(255, 255, 255, 0.4);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 50px; margin-bottom: 40px;
-            box-shadow: 0 25px 50px rgba(0, 30, 60, 0.4), inset 0 20px 20px -20px rgba(255,255,255,0.9);
-        }
+html { scroll-behavior: smooth; }
 
-        .panel-header {
-            font-size: 2rem; font-weight: 800; color: #004b87; text-shadow: 0 1px 1px #fff;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.8); padding-bottom: 15px; margin-top: 0; margin-bottom: 30px;
-            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-        }
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal-mid) 52%, var(--green-burst) 100%);
+    background-attachment: fixed;
+    color: #111827;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
 
-        /* --- FEATURES GRID --- */
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .feature-block h4 { font-size: 1.15rem; color: #003366; margin: 0 0 10px 0; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-        .feature-block p { font-size: 1rem; color: #222; margin: 0; font-weight: 500; }
-        .feature-block { 
-            background: rgba(255,255,255,0.6); padding: 25px; border-radius: 4px;
-            border-top: 1px solid #fff; border-left: 1px solid #fff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
+/* ── SCROLL REVEAL ── */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        /* --- PRICING SECTION --- */
-        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .price-card {
-            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(240,245,250,0.9) 100%);
-            padding: 40px; border-radius: 6px; border: 1px solid rgba(0, 75, 135, 0.3); 
-            border-top: 3px solid #1aa86b; box-shadow: 0 15px 30px rgba(0,0,0,0.15), inset 0 1px 0 #fff;
-            text-align: center;
-        }
-        .price-card h3 { font-size: 1.4rem; color: #004b87; margin: 0 0 10px 0; text-shadow: 0 1px 0 #fff; }
-        .price-amount { font-size: 3.5rem; font-weight: 800; color: #003366; margin: 0 0 10px 0; line-height: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .price-desc { font-size: 1rem; color: #444; margin-bottom: 30px; font-weight: 600;}
-        .price-list { list-style: none; padding: 0; margin: 0 0 30px 0; text-align: left; }
-        .price-list li { padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.95rem; font-weight: 600; color: #222; }
-        .price-list li::before { content: '✓'; color: #1aa86b; margin-right: 10px; font-weight: 900; font-size: 1.1rem; }
+/* ── HEADER ── */
+header {
+    position: fixed; top: 0; left: 0; right: 0; height: 72px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.52) 100%);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,0.75);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.22), inset 0 1px 0 #fff;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 52px; z-index: 1000;
+}
+.logo-wrap { display: flex; flex-direction: column; justify-content: center; }
+.logo-name {
+    font-size: 1.55rem; font-weight: 800; letter-spacing: 0.5px;
+    color: var(--navy); text-shadow: 0 1px 1px #fff; line-height: 1;
+}
+.logo-sub {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: #557; margin-top: 3px;
+}
+.nav-links { display: flex; align-items: center; gap: 0; }
+.nav-links a {
+    text-decoration: none; color: #111; font-weight: 600; font-size: 0.92rem;
+    margin-left: 28px; transition: color 0.18s; font-family: inherit;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+.nav-links a:hover { color: var(--blue-link); }
 
-        /* --- TRUE VISTA HARD-GLOSS EMERALD BUTTON (Specific for nav-cta) --- */
-        .nav-cta {
-            position: relative; display: inline-block; 
-            font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none;
-            border-radius: 30px; transition: all 0.2s; cursor: pointer; text-align: center; overflow: hidden;
-            font-family: inherit; color: white !important;
-            text-shadow: 0 -1px 1px rgba(0,0,0,0.7);
-            border: 1px solid rgba(0,0,0,0.8);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.3);
-            z-index: 1;
-            padding: 8px 22px; font-size: 0.95rem; margin-left: 30px;
-            background: linear-gradient(180deg, #1aa86b 0%, #0d6b41 49%, #054528 50%, #012111 100%);
-            border-top: 1px solid #4df5a5;
-        }
+/* Nav CTA — Vista gloss emerald pill */
+.nav-cta {
+    position: relative; display: inline-block; overflow: hidden;
+    font-weight: 800; font-size: 0.88rem; text-transform: uppercase;
+    letter-spacing: 0.6px; text-decoration: none; border-radius: 30px;
+    padding: 8px 22px; margin-left: 30px; cursor: pointer;
+    color: #fff !important; font-family: inherit;
+    background: linear-gradient(180deg, #22c97e 0%, #0d6b41 48%, #054528 50%, #012111 100%);
+    border: 1px solid rgba(0,0,0,0.75); border-top: 1px solid #5dfcb0;
+    box-shadow: 0 5px 14px rgba(0,0,0,0.38), inset 0 1px 1px rgba(255,255,255,0.28);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.65);
+    transition: all 0.2s;
+}
+.nav-cta::before {
+    content: ''; position: absolute; inset: 0; height: 50%;
+    background: linear-gradient(180deg,rgba(255,255,255,0.62) 0%,rgba(255,255,255,0.04) 100%);
+    border-radius: 30px 30px 0 0; pointer-events: none;
+}
+.nav-cta:hover { filter: brightness(1.18); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,0.48), 0 0 14px rgba(26,168,107,0.45); }
 
-        .nav-cta:hover { 
-            filter: brightness(1.2); 
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(26, 168, 107, 0.5); 
-            transform: translateY(-1px); 
-        }
+/* ── HERO ── */
+.hero {
+    padding: 155px 52px 90px 52px;
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; gap: 55px;
+}
+.hero-text { flex: 1; }
+.hero-eyebrow {
+    display: inline-block; font-size: 0.72rem; font-weight: 800;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.75); margin-bottom: 18px;
+    border: 1px solid rgba(255,255,255,0.3); border-radius: 20px;
+    padding: 5px 14px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+}
+.hero-title {
+    font-size: 3.8rem; font-weight: 800; letter-spacing: -1.5px;
+    margin: 0 0 18px 0; color: #fff;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.4); line-height: 1.08;
+}
+.hero-title em { font-style: normal; color: #7dffc8; }
+.hero-subtitle {
+    font-size: 1.2rem; color: rgba(240,248,255,0.9); font-weight: 500;
+    margin-bottom: 38px; max-width: 530px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.45); line-height: 1.65;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.hero-image-wrap { flex: 1; text-align: right; }
+.hero-image { width: 100%; max-width: 490px; filter: drop-shadow(0 22px 34px rgba(0,0,0,0.52)); }
 
-        .nav-cta::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
-            background: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 100%);
-            border-radius: 30px 30px 0 0; pointer-events: none; z-index: -1;
-        }
+/* ── GLASS ACRYLIC BUTTONS ── */
+.btn {
+    position: relative; display: inline-block; overflow: hidden;
+    font-weight: 700; font-size: 1rem; text-transform: uppercase;
+    letter-spacing: 0.5px; text-decoration: none; border-radius: 8px;
+    padding: 13px 34px; cursor: pointer; font-family: inherit;
+    color: #fff !important; z-index: 1;
+    backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-top: 1px solid rgba(255,255,255,0.88);
+    border-left: 1px solid rgba(255,255,255,0.55);
+    border-bottom: 1px solid rgba(0,0,0,0.18);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.38);
+    text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+    transition: all 0.28s cubic-bezier(0.25,0.8,0.25,1);
+}
+.btn::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:50%;
+    background: linear-gradient(180deg,rgba(255,255,255,0.38) 0%,rgba(255,255,255,0.04) 100%);
+    pointer-events:none; z-index:-1;
+}
+.btn-primary { background: rgba(26,168,107,0.32); }
+.btn-primary:hover { background:rgba(26,168,107,0.52); transform:translateY(-2px); box-shadow:0 14px 38px rgba(0,0,0,0.4),inset 0 2px 6px rgba(255,255,255,0.8); }
+.btn-ghost { background: rgba(255,255,255,0.18); }
+.btn-ghost:hover { background:rgba(255,255,255,0.32); transform:translateY(-2px); box-shadow:0 14px 38px rgba(0,0,0,0.4),inset 0 2px 6px rgba(255,255,255,0.8); }
 
-        .nav-cta::after {
-            content: ''; position: absolute; bottom: 0; left: 10%; right: 10%; height: 40%;
-            background: radial-gradient(ellipse at bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 0 0 30px 30px; pointer-events: none; z-index: -1;
-        }
+/* ── CONTAINER & GLASS PANELS ── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 52px 90px 52px; }
 
-        /* --- PURE IOS/ACRYLIC GLASS BUTTONS (For main page actions) --- */
-        .btn {
-            position: relative; display: inline-block; 
-            font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none;
-            border-radius: 8px; /* Slightly rounded edge like physical acrylic */
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); cursor: pointer; text-align: center; overflow: hidden;
-            font-family: inherit; color: #ffffff !important;
-            
-            /* The Pure Glass Base - High Saturation */
-            background: rgba(255, 255, 255, 0.15); 
-            backdrop-filter: blur(20px) saturate(150%); 
-            -webkit-backdrop-filter: blur(20px) saturate(150%);
-            
-            /* Sharp Glass Light Bleed Borders */
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-top: 1px solid rgba(255, 255, 255, 0.9); /* Hard white highlight */
-            border-left: 1px solid rgba(255, 255, 255, 0.6);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* Deep bottom shadow */
-            
-            /* External Drop Shadow + Internal Frost */
-            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.4);
-            
-            /* Heavy text shadow */
-            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
-            z-index: 1;
-            padding: 14px 35px; font-size: 1.05rem;
-        }
-        
-        /* Dedicated Email Button Fix */
-        .btn-email {
-            text-transform: lowercase;
-            font-weight: 600;
-            letter-spacing: 0.2px;
-            font-size: 1.05rem;
-            padding: 14px 30px;
-        }
+.glass-panel {
+    background: linear-gradient(135deg, rgba(255,255,255,0.87) 0%, rgba(255,255,255,0.46) 100%);
+    backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+    border-radius: 8px;
+    border-top: 2px solid rgba(255,255,255,1);
+    border-left: 1px solid rgba(255,255,255,0.92);
+    border-right: 1px solid rgba(255,255,255,0.38);
+    border-bottom: 1px solid rgba(255,255,255,0.38);
+    padding: 52px; margin-bottom: 42px;
+    box-shadow: 0 28px 55px var(--shadow-deep), inset 0 22px 22px -22px rgba(255,255,255,0.92);
+}
 
-        /* Top half hard-glass reflection */
-        .btn::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
-            background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 100%);
-            pointer-events: none; z-index: -1;
-        }
+.panel-header {
+    font-size: 1.95rem; font-weight: 800; color: var(--blue-mid);
+    text-shadow: 0 1px 1px #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.85);
+    padding-bottom: 14px; margin-top: 0; margin-bottom: 32px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+    display: flex; align-items: center; gap: 14px;
+}
+.panel-icon { font-size: 1.6rem; line-height: 1; }
 
-        /* EMERALD TINT GLASS (Primary Licensing Button) */
-        .btn-primary {
-            background: rgba(26, 168, 107, 0.3); /* Stronger green tint so it doesn't look gray */
-        }
-        .btn-primary:hover { 
-            background: rgba(26, 168, 107, 0.5);
-            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.8); 
-            transform: translateY(-2px); 
-        }
+/* ── FEATURE GRID ── */
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
 
-        /* CLEAR / WHITE FROST GLASS (Email) */
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2); /* Bright frosted white */
-        }
-        .btn-secondary:hover { 
-            background: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.8); 
-            transform: translateY(-2px); 
-        }
+.feature-block {
+    background: rgba(255,255,255,0.62); padding: 28px 24px; border-radius: 6px;
+    border-top: 1px solid #fff; border-left: 1px solid #fff;
+    box-shadow: 0 5px 16px rgba(0,0,0,0.07);
+    transition: transform 0.22s, box-shadow 0.22s;
+}
+.feature-block:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.13);
+}
+.feature-block h4 {
+    font-size: 1.05rem; color: var(--navy); margin: 0 0 10px 0;
+    font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.feature-block p { font-size: 0.97rem; color: #2a2a2a; margin: 0; font-weight: 500; line-height: 1.6; }
 
-        /* --- FOOTER --- */
-        footer {
-            text-align: center; padding: 40px; font-size: 0.9rem; color: #f0f8ff; font-weight: 600;
-            border-top: 1px solid rgba(255,255,255,0.2); margin-top: 40px; text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        }
+/* ── STAT STRIP ── */
+.stat-strip {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+    background: rgba(255,255,255,0.12); border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.28);
+    backdrop-filter: blur(14px); margin: 0 0 42px 0;
+    overflow: hidden;
+}
+.stat-item {
+    padding: 30px 24px; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.22);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+    font-size: 2.6rem; font-weight: 800; color: #fff; line-height: 1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.stat-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 6px; }
 
-        /* --- FIXED MOBILE RESPONSIVENESS --- */
-        @media (max-width: 900px) {
-            header { position: absolute; flex-direction: column; height: auto; padding: 15px; text-align: center; }
-            .logo { font-size: 1.5rem; margin-bottom: 5px; }
-            .nav-links { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-            .nav-links a { margin-left: 0; font-size: 0.85rem; padding: 0 5px; }
-            .nav-cta { margin-left: 0; margin-top: 5px; width: auto; }
-            
-            .hero { flex-direction: column; text-align: center; padding-top: 160px; padding-bottom: 20px; gap: 20px; }
-            .hero-title { font-size: 2.4rem; margin-bottom: 10px; }
-            .hero-subtitle { font-size: 1.05rem; margin: 0 auto 20px auto; padding: 0 10px; }
-            
-            .hero-actions { justify-content: center; flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; gap: 15px; }
-            .hero-actions .btn { width: 100%; box-sizing: border-box; padding: 14px 15px; font-size: 0.95rem; }
-            .hero-actions .btn-email { font-size: 0.9rem; }
-            
-            .hero-image-container { text-align: center; margin-top: 15px; width: 100%; }
-            .hero-image { max-width: 100%; width: 320px; margin: 0 auto; } 
-            
-            .container { padding: 0 15px 40px 15px; }
-            .glass-panel { padding: 35px 20px; margin-bottom: 30px; }
-            .panel-header { font-size: 1.8rem; margin-bottom: 20px; text-align: center; }
-            
-            .grid-3 { grid-template-columns: 1fr; gap: 20px; }
-            .feature-block { padding: 25px 20px; }
-            
-            .pricing-grid { grid-template-columns: 1fr; gap: 25px; }
-            .price-card { padding: 35px 20px; }
-            .price-amount { font-size: 3rem; }
-        }
-    </style>
+/* ── PRICING ── */
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; align-items: start; }
+
+.price-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(238,246,255,0.93) 100%);
+    padding: 38px 32px 32px 32px; border-radius: 8px;
+    border: 1px solid rgba(0,75,135,0.22);
+    border-top: 3px solid var(--green-vivid);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.14), inset 0 1px 0 #fff;
+}
+.price-card.featured {
+    border-top: 3px solid var(--blue-mid);
+    background: linear-gradient(180deg, #fff 0%, rgba(228,241,255,0.97) 100%);
+    box-shadow: 0 22px 48px rgba(0,0,0,0.22), inset 0 1px 0 #fff;
+    transform: translateY(-6px);
+}
+.price-badge {
+    display: inline-block; font-size: 0.68rem; font-weight: 800;
+    letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px;
+    border-radius: 20px; margin-bottom: 14px;
+    background: var(--blue-mid); color: #fff;
+}
+.price-card h3 { font-size: 1.3rem; font-weight: 800; color: var(--blue-mid); margin: 0 0 6px 0; }
+.price-tag { display: flex; align-items: baseline; gap: 4px; margin: 12px 0 4px 0; }
+.price-amount { font-size: 3rem; font-weight: 800; color: var(--navy); line-height: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.price-monthly { font-size: 1rem; font-weight: 700; color: var(--blue-mid); }
+.price-desc { font-size: 0.92rem; color: #555; font-weight: 600; margin: 0 0 22px 0; line-height: 1.5; }
+.price-divider { height: 1px; background: rgba(0,0,0,0.07); margin: 0 0 20px 0; }
+.price-list { list-style: none; padding: 0; margin: 0; }
+.price-list li {
+    padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.045);
+    font-size: 0.9rem; font-weight: 600; color: #222;
+    display: flex; align-items: flex-start; gap: 9px;
+}
+.price-list li:last-child { border-bottom: none; }
+.price-list li::before { content: '✓'; color: var(--green-vivid); font-weight: 900; font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.price-note { font-size: 0.8rem; color: #777; font-weight: 600; margin-top: 18px; font-style: italic; }
+
+/* ── CONTACT MODAL ── */
+.modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 2000;
+    background: rgba(0,20,40,0.72); backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+
+.modal-box {
+    background: linear-gradient(145deg, rgba(255,255,255,0.96) 0%, rgba(240,248,255,0.94) 100%);
+    border-radius: 10px;
+    border-top: 2px solid #fff;
+    border-left: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 0 40px 80px rgba(0,20,50,0.5), inset 0 1px 0 #fff;
+    padding: 48px 44px 40px 44px; width: 100%; max-width: 520px;
+    position: relative;
+    animation: modalIn 0.28s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(0.92) translateY(16px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-close {
+    position: absolute; top: 16px; right: 20px;
+    background: none; border: none; cursor: pointer;
+    font-size: 1.5rem; color: #888; line-height: 1;
+    transition: color 0.15s;
+}
+.modal-close:hover { color: #333; }
+.modal-box h2 { font-size: 1.65rem; font-weight: 800; color: var(--navy); margin: 0 0 6px 0; }
+.modal-box p { font-size: 0.95rem; color: #555; font-weight: 500; margin: 0 0 28px 0; }
+.modal-box label { display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--blue-mid); margin-bottom: 6px; margin-top: 18px; }
+.modal-box label:first-of-type { margin-top: 0; }
+.modal-box input, .modal-box textarea, .modal-box select {
+    width: 100%; padding: 11px 14px; border-radius: 6px;
+    border: 1px solid rgba(0,75,135,0.28);
+    border-top: 1px solid rgba(0,75,135,0.15);
+    background: rgba(255,255,255,0.85);
+    font-family: inherit; font-size: 0.95rem; font-weight: 500; color: #111;
+    outline: none; transition: border-color 0.18s, box-shadow 0.18s;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.06);
+}
+.modal-box input:focus, .modal-box textarea:focus, .modal-box select:focus {
+    border-color: var(--blue-mid);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.06), 0 0 0 3px rgba(0,75,135,0.12);
+}
+.modal-box textarea { resize: vertical; min-height: 110px; }
+.modal-submit {
+    width: 100%; margin-top: 26px; padding: 13px;
+    font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.8px;
+    cursor: pointer; border-radius: 8px; font-family: inherit;
+    color: #fff; border: none;
+    background: linear-gradient(180deg, #22c97e 0%, #0d6b41 48%, #054528 50%, #012111 100%);
+    border-top: 1px solid #5dfcb0;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.28);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+    transition: filter 0.2s, transform 0.2s;
+}
+.modal-submit:hover { filter: brightness(1.15); transform: translateY(-1px); }
+.modal-sent { display: none; text-align: center; padding: 20px 0 10px; }
+.modal-sent .check { font-size: 3rem; margin-bottom: 12px; }
+.modal-sent h3 { font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+.modal-sent p { color: #555; }
+
+/* ── FOOTER ── */
+footer {
+    text-align: center; padding: 42px 20px; font-size: 0.88rem;
+    color: rgba(240,248,255,0.85); font-weight: 600;
+    border-top: 1px solid rgba(255,255,255,0.18); margin-top: 20px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5); line-height: 1.9;
+}
+footer a { color: rgba(255,255,255,0.65); text-decoration: none; margin: 0 12px; }
+footer a:hover { color: #fff; }
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+    header { position: absolute; flex-direction: column; height: auto; padding: 15px 20px; text-align: center; }
+    .logo-wrap { align-items: center; }
+    .nav-links { margin-top: 10px; flex-wrap: wrap; justify-content: center; gap: 6px; }
+    .nav-links a { margin-left: 0; font-size: 0.85rem; }
+    .nav-cta { margin-left: 0; margin-top: 4px; }
+    .hero { flex-direction: column; padding: 170px 20px 50px; gap: 28px; text-align: center; }
+    .hero-title { font-size: 2.4rem; }
+    .hero-subtitle { font-size: 1.05rem; margin: 0 auto 24px; }
+    .hero-actions { justify-content: center; flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
+    .hero-actions .btn { width: 100%; }
+    .hero-image-wrap { text-align: center; }
+    .hero-image { max-width: 300px; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .container { padding: 0 16px 50px; }
+    .glass-panel { padding: 32px 20px; margin-bottom: 28px; }
+    .panel-header { font-size: 1.65rem; }
+    .grid-3, .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
+    .price-card.featured { transform: none; }
+    .modal-box { padding: 36px 24px 28px; margin: 16px; }
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">DIAL ENGINE™</div>
-        <div class="nav-links">
-            <a href="#features">Architecture</a>
-            <a href="#pricing">Pricing</a>
-            <a href="license.html">License</a>
-            <a href="privacy.html">Privacy</a>
-            <a href="mailto:yahyaadillapro@gmail.com" class="nav-cta">Contact Developer</a>
-        </div>
-    </header>
+<!-- ── CONTACT MODAL ── -->
+<div class="modal-overlay" id="contactModal" onclick="handleOverlayClick(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div id="modalForm">
+            <h2>Request Deployment</h2>
+            <p>All engagements begin with a scoping call. Fill out the form and ZLF Systems will be in touch within 24 hours.</p>
 
-    <div class="hero">
-        <div class="hero-text">
-            <h1 class="hero-title">The Engine Behind High-Ticket Floors.</h1>
-            <p class="hero-subtitle">A deployable backend architecture built to mass-provision lightweight, zero-cost-per-seat CRMs. Automate your hiring and firing, track KPIs, and route real-time telemetry at scale.</p>
-            <div class="hero-actions">
-                <a href="#pricing" class="btn btn-primary">VIEW LICENSING</a>
-                <a href="mailto:yahyaadillapro@gmail.com" class="btn btn-secondary btn-email">yahyaadillapro@gmail.com</a>
-            </div>
+            <label>Company Name</label>
+            <input type="text" placeholder="Your company or floor name" id="mCompany">
+
+            <label>Contact Email</label>
+            <input type="email" placeholder="your@company.com" id="mEmail">
+
+            <label>Deployment Interest</label>
+            <select id="mTier">
+                <option value="">— Select a tier —</option>
+                <option>Dial Engine Core Infrastructure</option>
+                <option>Enterprise Routing Layer (Add-On)</option>
+                <option>Full Enterprise Bundle</option>
+                <option>Not sure — need a consultation</option>
+            </select>
+
+            <label>Tell us about your operation</label>
+            <textarea placeholder="Approximate team size, current dialing setup, campaign type..." id="mMessage"></textarea>
+
+            <button class="modal-submit" onclick="submitModal()">Submit Inquiry →</button>
         </div>
-        <div class="hero-image-container">
-            <img src="softwarebox.jpg" alt="Dial Engine Software" class="hero-image">
+        <div class="modal-sent" id="modalSent">
+            <div class="check">✅</div>
+            <h3>Inquiry Received</h3>
+            <p>ZLF Systems will contact you within 24 hours to schedule your scoping call.</p>
         </div>
     </div>
+</div>
 
-    <div class="container" id="features">
-        <div class="glass-panel">
-            <h2 class="panel-header">Agent & Station Management</h2>
-            <div class="grid-3">
-                <div class="feature-block">
-                    <h4>Instant CRM Provisioning</h4>
-                    <p>Deploy terminals globally. Automatically clone master CRM templates, bypass pooling limits, and assign active SIP credentials to new hires in seconds.</p>
-                </div>
-                <div class="feature-block">
-                    <h4>Automated Offboarding</h4>
-                    <p>Maintain complete control. Revoke workspace access, wipe the assigned CRM, and instantly vault the station back into the available pool with a single command.</p>
-                </div>
-                <div class="feature-block">
-                    <h4>Secure Credential Routing</h4>
-                    <p>Keep operations moving. The Engine allows management to silently audit active stations or securely resend SIP/CRM login details directly to agents via automated direct messages.</p>
-                </div>
-            </div>
-        </div>
+<!-- ── HEADER ── -->
+<header>
+    <div class="logo-wrap">
+        <div class="logo-name">ZLF Systems</div>
+        <div class="logo-sub">Dial Engine™ Infrastructure</div>
+    </div>
+    <div class="nav-links">
+        <a href="#features">Architecture</a>
+        <a href="#pricing">Pricing</a>
+        <a href="license.html">License</a>
+        <a href="privacy.html">Privacy</a>
+        <button onclick="openModal()" class="nav-cta" style="border:none;cursor:pointer;">Request Deployment</button>
+    </div>
+</header>
 
-        <div class="glass-panel">
-            <h2 class="panel-header">Lead Routing & Vault Control</h2>
-            <div class="grid-3">
-                <div class="feature-block">
-                    <h4>Dynamic Vault Injection</h4>
-                    <p>Route leads with precision. Inject specific amounts directly into a single agent's CRM, or execute a mass-injection to feed all active terminals simultaneously.</p>
-                </div>
-                <div class="feature-block">
-                    <h4>Mix & Match Shuffling</h4>
-                    <p>Prevent list fatigue. Instantly wipe current active CRMs, shuffle the master vault, and deal completely randomized batches to your dialers to keep momentum high.</p>
-                </div>
-                <div class="feature-block">
-                    <h4>Inventory Recycling</h4>
-                    <p>Never lose a lead. Run recycling commands to reclaim partial or complete lead batches from inactive agents and return them cleanly to the master vault.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-panel">
-            <h2 class="panel-header">Telemetry & Operations</h2>
-            <div class="grid-3">
-                <div class="feature-block">
-                    <h4>Live Global Auditing</h4>
-                    <p>Total operational visibility. Pull exact counts of fresh vault inventory, check the status of all telephony numbers, and audit successful transfers straight from the immutable ledger.</p>
-                </div>
-                <div class="feature-block">
-                    <h4>Automated Leaderboards</h4>
-                    <p>Built-in floor gamification. Continuously track true daily dials and wins, privately DM statistics to management, or broadcast historic and daily leaderboards directly to the team.</p>
-                </div>
-                <div class="feature-block">
-                    <h4>Mass Floor Communications</h4>
-                    <p>Command the room. Utilize central hub tools to bypass group chats and privately message all active dialers simultaneously with critical updates or alerts.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-panel" id="pricing">
-            <h2 class="panel-header" style="text-align: center; border-bottom: none; margin-bottom: 10px;">Corporate Software Licensing</h2>
-            <p style="text-align: center; color: #222; margin-bottom: 40px; font-weight: 600;">Dial Engine is available via standard B2B enterprise licensing. The software is yours to operate.</p>
-            
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>Enterprise Deployment</h3>
-                    <div class="price-amount">$5,000</div>
-                    <div class="price-desc">One-time standard licensing fee for architecture delivery and CRM automation setup.</div>
-                    <ul class="price-list">
-                        <li>1 Month Free Maintenance Included</li>
-                        <li>Master Database & Hub Initialization</li>
-                        <li>Automated Provisioning Logic</li>
-                        <li>Custom Central Command Setup</li>
-                        <li>Initial API Configurations</li>
-                    </ul>
-                </div>
-                
-                <div class="price-card">
-                    <h3>Starter Maintenance</h3>
-                    <div class="price-amount">$2,500<span style="font-size: 1.2rem; color: #666;">/mo</span></div>
-                    <div class="price-desc">Base monthly subscription for ongoing backend updates. Pricing scales subject to infrastructure and operational capacity.</div>
-                    <ul class="price-list">
-                        <li>Live Logic Updates & Optimization</li>
-                        <li>Database & Telemetry Support</li>
-                        <li>Automated Bug Fixes</li>
-                        <li>Infrastructure Scaling Support</li>
-                    </ul>
-                </div>
-            </div>
+<!-- ── HERO ── -->
+<div class="hero reveal">
+    <div class="hero-text">
+        <div class="hero-eyebrow">ZLF Systems — Managed CCaaS Infrastructure</div>
+        <h1 class="hero-title">The Engine Powering<br><em>High-Ticket Sales Floors.</em></h1>
+        <p class="hero-subtitle">Dial Engine™ is a fully managed, proprietary contact center infrastructure — built, deployed, and maintained by ZLF Systems for international high-volume sales operations. Not software. Not a SaaS. Infrastructure.</p>
+        <div class="hero-actions">
+            <a href="#pricing" class="btn btn-primary">View Licensing</a>
+            <button onclick="openModal()" class="btn btn-ghost">Request Deployment</button>
         </div>
     </div>
+    <div class="hero-image-wrap">
+        <img src="softwarebox.jpg" alt="Dial Engine™ Dashboard" class="hero-image">
+    </div>
+</div>
 
-    <footer>
-        &copy; 2026 Mohamed Yahya Adilla. All Rights Reserved. Dial Engine™ is a proprietary trademark.<br>
-        Unauthorized reproduction, distribution, or reverse-engineering is strictly prohibited under international copyright law.
-    </footer>
+<!-- ── STAT STRIP ── -->
+<div class="container">
+<div class="stat-strip reveal">
+    <div class="stat-item">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Scalable Agent Seats</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">3wk</div>
+        <div class="stat-label">Full Deployment Time</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">Cost Per Agent Seat</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Managed Infrastructure</div>
+    </div>
+</div>
+
+<!-- ── FEATURES ── -->
+<div id="features">
+
+<div class="glass-panel reveal">
+    <h2 class="panel-header"><span class="panel-icon">⚙️</span>Agent Lifecycle & Station Control</h2>
+    <div class="grid-3">
+        <div class="feature-block">
+            <h4>Instant Agent Provisioning</h4>
+            <p>New hires are onboarded in seconds. The system automatically provisions a fully configured CRM workspace, assigns active telephony credentials, and delivers login details directly to the agent — zero manual setup required from management.</p>
+        </div>
+        <div class="feature-block">
+            <h4>One-Command Termination</h4>
+            <p>A single command revokes all workspace access, wipes the assigned CRM, reclaims telephony credentials, and vaults the station back into the ready pool — cleanly and instantly. The floor never stops moving.</p>
+        </div>
+        <div class="feature-block">
+            <h4>Station Recovery & Reuse</h4>
+            <p>No station is ever wasted. Terminated and recycled workspaces are automatically re-pooled and made available for the next hire, eliminating infrastructure bloat and ensuring a permanent supply of deployable seats at zero marginal cost.</p>
+        </div>
+    </div>
+</div>
+
+<div class="glass-panel reveal">
+    <h2 class="panel-header"><span class="panel-icon">🗄️</span>Lead Vault & Distribution Engine</h2>
+    <div class="grid-3">
+        <div class="feature-block">
+            <h4>Precision Vault Injection</h4>
+            <p>Route any quantity of leads to any agent with a single command. Inject directly into a single station, execute a calibrated distribution across a subset of agents, or trigger a full floor-wide mass injection in seconds.</p>
+        </div>
+        <div class="feature-block">
+            <h4>Shuffle & Redistribution</h4>
+            <p>Combat list fatigue before it kills momentum. Wipe active CRMs, randomize the master vault, and re-deal fresh batches across the floor — keeping dialers on new contacts and conversion rates from decaying mid-shift.</p>
+        </div>
+        <div class="feature-block">
+            <h4>Inventory Recovery</h4>
+            <p>Every lead is accounted for. Partial or full batches assigned to inactive, recycled, or terminated agents are instantly reclaimed and returned to the live vault — ensuring no inventory is ever stranded or lost.</p>
+        </div>
+    </div>
+</div>
+
+<div class="glass-panel reveal">
+    <h2 class="panel-header"><span class="panel-icon">📡</span>Real-Time Telemetry & KPI Operations</h2>
+    <div class="grid-3">
+        <div class="feature-block">
+            <h4>Live Floor Dashboard</h4>
+            <p>Pull a live snapshot of the entire floor at any moment — agent status, current CRM inventory per seat, vault depth, telephony line availability, and active session counts — all in a single command from the operational hub.</p>
+        </div>
+        <div class="feature-block">
+            <h4>Shift-Persistent KPI Tracking</h4>
+            <p>Daily dials and conversion metrics are tracked continuously across the full shift, surviving CRM wipes, mid-shift recycling, and new lead injections. Managers always see the true running total — not a reset counter.</p>
+        </div>
+        <div class="feature-block">
+            <h4>Automated Leaderboards & Broadcasts</h4>
+            <p>Gamify the floor with live-updated daily and all-time leaderboards. Push private KPI briefings directly to management, or broadcast floor-wide updates and alerts to all active agents simultaneously from the command hub.</p>
+        </div>
+    </div>
+</div>
+
+<div class="glass-panel reveal">
+    <h2 class="panel-header"><span class="panel-icon">📞</span>Telephony Integration & Dialing Infrastructure</h2>
+    <div class="grid-3">
+        <div class="feature-block">
+            <h4>Frictionless One-Click Dialing</h4>
+            <p>Agents dial without ever copying a number. The system dynamically renders all contacts as live clickable links within the CRM — a single click bridges directly to the telephony client and places the call instantly, eliminating manual entry entirely.</p>
+        </div>
+        <div class="feature-block">
+            <h4>Automated SIP Credential Routing</h4>
+            <p>Each agent seat is assigned a dedicated telephony line with a unique extension and authentication profile. Credentials are automatically generated, stored, and dispatched during onboarding — and can be re-issued to any agent on demand in seconds.</p>
+        </div>
+        <div class="feature-block">
+            <h4>Enterprise Routing Layer (Add-On)</h4>
+            <p>For floors requiring warm transfers, managed inbound queues, or internal extension networks, ZLF Systems deploys a fully configured Private Branch Exchange layer — enabling advanced call routing and transfer architecture natively within the operational stack.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ── PRICING ── -->
+<div class="glass-panel reveal" id="pricing">
+    <h2 class="panel-header" style="border-bottom:none; margin-bottom:8px; justify-content:center;">
+        <span class="panel-icon">📋</span>Managed Infrastructure Licensing
+    </h2>
+    <p style="text-align:center; color:#333; font-weight:600; margin-bottom:42px; font-size:0.97rem; max-width:680px; margin-left:auto; margin-right:auto;">
+        ZLF Systems does not offer self-service access or automatic provisioning. Every deployment is engineered and maintained by our team. All invoicing is handled via direct corporate wire transfer or Wise business invoice.
+    </p>
+
+    <div class="pricing-grid">
+
+        <!-- CORE -->
+        <div class="price-card">
+            <h3>Dial Engine Core</h3>
+            <div class="price-tag">
+                <div class="price-amount">$5,000</div>
+            </div>
+            <div class="price-monthly" style="margin-bottom:4px;">+ $3,000 / month managed support</div>
+            <div class="price-desc">Full backend infrastructure deployment. One-time fee includes the first 30 days of managed support at no additional charge.</div>
+            <div class="price-divider"></div>
+            <ul class="price-list">
+                <li>Dial Engine deployment & configuration</li>
+                <li>CRM environment initialization</li>
+                <li>Operational command workspace setup</li>
+                <li>Lead vault infrastructure</li>
+                <li>SIP routing & dialing bridge integration</li>
+                <li>Automated provisioning & offboarding logic</li>
+                <li>Initial API layer configuration</li>
+                <li>1 month free managed maintenance</li>
+            </ul>
+            <p class="price-note">Monthly rate scales with floor seat count and operational capacity.</p>
+        </div>
+
+        <!-- PBX -->
+        <div class="price-card">
+            <h3>Enterprise Routing Layer</h3>
+            <div class="price-tag">
+                <div class="price-amount">$3,000</div>
+            </div>
+            <div class="price-monthly" style="margin-bottom:4px; color:#888;">One-time integration fee</div>
+            <div class="price-desc">Advanced voice routing add-on for floors requiring warm transfers, managed queues, and internal extension networks.</div>
+            <div class="price-divider"></div>
+            <ul class="price-list">
+                <li>Private Branch Exchange deployment</li>
+                <li>Warm transfer routing architecture</li>
+                <li>Internal extension network setup</li>
+                <li>Inbound queue management</li>
+                <li>Advanced call handling configuration</li>
+                <li>Trunk & line integration</li>
+            </ul>
+            <p class="price-note">Requires active Dial Engine Core deployment. Cannot be purchased standalone.</p>
+        </div>
+
+        <!-- BUNDLE -->
+        <div class="price-card featured">
+            <div class="price-badge">Best Value</div>
+            <h3>Full Enterprise Bundle</h3>
+            <div class="price-tag">
+                <div class="price-amount">$6,000</div>
+            </div>
+            <div class="price-monthly" style="margin-bottom:4px;">+ $5,000 / month managed infrastructure</div>
+            <div class="price-desc">Complete enterprise stack. Core Dial Engine plus full Enterprise Routing Layer in a single priority engagement.</div>
+            <div class="price-divider"></div>
+            <ul class="price-list">
+                <li>Everything in Dial Engine Core</li>
+                <li>Full Enterprise Routing Layer included</li>
+                <li>Transfer & queue infrastructure</li>
+                <li>Custom operational configuration</li>
+                <li>Priority deployment scheduling</li>
+                <li>Dedicated technical onboarding</li>
+                <li>Priority engineering support</li>
+                <li>1 month free managed maintenance</li>
+            </ul>
+            <p class="price-note">Recommended for established floors with active transfer operations.</p>
+        </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:42px;">
+        <p style="font-size:0.92rem; font-weight:600; color:#444; margin-bottom:20px;">All deployments begin with a scoping call. Reach out to initiate the process.</p>
+        <button onclick="openModal()" class="btn btn-primary" style="font-size:0.95rem; padding:13px 42px;">Request Deployment →</button>
+    </div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+    <div style="margin-bottom:12px;">
+        <a href="license.html">License</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="#" onclick="openModal();return false;">Contact</a>
+    </div>
+    &copy; 2026 ZLF Systems. All Rights Reserved.<br>
+    Dial Engine™ is a proprietary trademark of ZLF Systems. Unauthorized reproduction, distribution, or reverse-engineering is strictly prohibited under international copyright law.
+</footer>
+
+<script>
+/* ── MODAL ── */
+function openModal() {
+    document.getElementById('contactModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+    document.getElementById('contactModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+function handleOverlayClick(e) {
+    if (e.target === document.getElementById('contactModal')) closeModal();
+}
+function submitModal() {
+    const email = document.getElementById('mEmail').value.trim();
+    const company = document.getElementById('mCompany').value.trim();
+    if (!email || !company) { alert('Please fill in your company name and email.'); return; }
+    // Build mailto as fallback — a real backend can replace this
+    const tier = document.getElementById('mTier').value;
+    const msg = document.getElementById('mMessage').value;
+    const subject = encodeURIComponent('Deployment Inquiry — ' + company);
+    const body = encodeURIComponent(
+        'Company: ' + company + '\nTier: ' + tier + '\n\n' + msg
+    );
+    window.location.href = 'mailto:yahyaadillapro@gmail.com?subject=' + subject + '&body=' + body;
+    document.getElementById('modalForm').style.display = 'none';
+    document.getElementById('modalSent').style.display = 'block';
+}
+
+/* ── SCROLL REVEAL ── */
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.08 });
+revealEls.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
