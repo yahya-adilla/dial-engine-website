@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIAL ENGINE™ | ZLF Systems </title>
+    <title>DIAL ENGINE™ | The Engine Powering Sales Floors</title>
     <style>
         /* --- VISTA AURORA AESTHETIC --- */
         * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             margin: 0;
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -187,6 +188,77 @@
         .feature-hero .tag { color: #b8ffd9; }
         .feature-hero h4 { color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-size: 1.5rem; }
         .feature-hero p { color: #e8faff; }
+
+        /* --- CAPABILITY CONSOLE (TABBED + LAYERED) --- */
+        .cap-console { margin-bottom: 80px; position: relative; }
+        .cap-tabs {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+            padding: 10px; margin: 0 auto 30px auto; max-width: 760px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.25) 100%);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-radius: 40px;
+            border-top: 1px solid rgba(255,255,255,0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 12px 30px rgba(0,30,60,0.35), inset 0 1px 0 rgba(255,255,255,0.9);
+        }
+        .cap-tab {
+            cursor: pointer; border: none; font-family: inherit;
+            padding: 10px 22px; border-radius: 30px;
+            font-size: 0.82rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+            color: #003366; background: transparent; transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+        }
+        .cap-tab:hover { color: #005a9e; }
+        .cap-tab.active {
+            color: #fff; text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+            background: linear-gradient(180deg, #1aa86b 0%, #0d6b41 50%, #054528 100%);
+            border-top: 1px solid #4df5a5;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+        .cap-panel { display: none; animation: capFade 0.5s cubic-bezier(.25,.8,.25,1); }
+        .cap-panel.active { display: block; }
+        @keyframes capFade {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-6px); }
+        }
+        .bento-card.floating { animation: floatY 7s ease-in-out infinite; }
+        .bento-card.floating.delay { animation-delay: 1.8s; }
+
+        .bento-card::after {
+            content: ''; position: absolute; top: 0; left: -75%; width: 50%; height: 100%;
+            background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+            transform: skewX(-20deg); transition: left 0.8s cubic-bezier(.25,.8,.25,1);
+            pointer-events: none;
+        }
+        .bento-card:hover::after { left: 125%; }
+
+        .feature-hero.layered::before {
+            content: ''; position: absolute; inset: 12px -10px -10px 12px; z-index: -1;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(184,255,217,0.35), rgba(0,191,255,0.25));
+            filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .feature-hero .metrics {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+            margin-top: 18px; padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,0.25);
+        }
+        .feature-hero .metric .v { font-size: 1.3rem; font-weight: 800; color: #b8ffd9; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+        .feature-hero .metric .l { font-size: 0.68rem; font-weight: 700; color: #e8faff; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 6px; }
+
+        .cap-chip {
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-top: 14px; padding: 5px 12px; border-radius: 20px;
+            background: rgba(26,168,107,0.12); border: 1px solid rgba(26,168,107,0.35);
+            font-size: 0.72rem; font-weight: 800; color: #0d6b41;
+            text-transform: uppercase; letter-spacing: 1.5px;
+        }
+        .cap-chip::before { content: '●'; color: #1aa86b; font-size: 0.6rem; }
 
         /* --- PIPELINE DIAGRAM --- */
         .pipeline {
@@ -497,22 +569,24 @@
 <body>
 
     <header>
-        <div class="logo">ZLF Systems - DIAL ENGINE™</div>
+        <div class="logo">
+            ZLF Systems - DIAL ENGINE™
+        </div>
         <div class="nav-links">
             <a href="#capabilities">Capabilities</a>
             <a href="#pipeline">How It Runs</a>
             <a href="#pricing">Licensing</a>
             <a href="license.html">License</a>
             <a href="privacy.html">Privacy</a>
-            <a href="#contact" class="nav-cta">Request Access</a>
+            <a href="#contact" class="nav-cta">Request Deployment</a>
         </div>
     </header>
 
     <div class="hero">
         <div class="hero-text">
-            <span class="eyebrow">ZLF Systems's DIAL ENGINE™</span>
-            <h1 class="hero-title">The Engine Powering  <span class="accent">Sales Floors.</span></h1>
-            <p class="hero-subtitle">Dial Engine™ is the operational backbone for high-ticket sales floors — a deployable infrastructure stack engineered to mass-provision lightweight, zero-cost-per-seat CRM environments, automate workforce operations, route live lead inventory, and manage your entire floor from a centralized command hub.</p>
+            <span class="eyebrow">ZLF Systems SARL</span>
+            <h1 class="hero-title">The Engine Powering <span class="accent">Sales Firms.</span></h1>
+            <p class="hero-subtitle">Dial Engine™ is the operational backbone for sales firms — a deployable infrastructure engineered to mass-provision lightweight, zero-cost-per-seat CRM environments, automate operations, distribute and account for leads, and manage your entire floor from a centralized command hub.</p>
             <div class="hero-actions">
                 <a href="#pricing" class="btn btn-primary">View Licensing</a>
                 <a href="#contact" class="btn btn-secondary">Request Deployment</a>
@@ -525,15 +599,15 @@
 
     <div class="marquee-strip">
         <div class="marquee-track">
-            <span>Mass Provisioning</span>
+            <span>Instant CRM Onboarding</span>
             <span>Lead Vault Routing</span>
-            <span>Live Telemetry</span>
+            <span>Live KPIs</span>
             <span>Floor-Wide Broadcasts</span>
             <span>Managed SIP Infrastructure</span>
             <span>Zero-Cost-Per-Seat CRMs</span>
-            <span>Mass Provisioning</span>
+            <span>Instant CRM Onboarding</span>
             <span>Lead Vault Routing</span>
-            <span>Live Telemetry</span>
+            <span>Live KPIs</span>
             <span>Floor-Wide Broadcasts</span>
             <span>Managed SIP Infrastructure</span>
             <span>Zero-Cost-Per-Seat CRMs</span>
@@ -542,15 +616,14 @@
 
     <div class="container">
 
-        <!-- STAT BAR -->
         <div class="stat-bar">
             <div class="stat-cell">
-                <div class="stat-num">300+</div>
-                <div class="stat-label">Concurrent Seats</div>
+                <div class="stat-num">∞</div>
+                <div class="stat-label">Seat Capacity</div>
             </div>
             <div class="stat-cell">
                 <div class="stat-num">&lt; 60s</div>
-                <div class="stat-label">New-Hire Provision</div>
+                <div class="stat-label">Agent Setup Time</div>
             </div>
             <div class="stat-cell">
                 <div class="stat-num">$0</div>
@@ -562,65 +635,126 @@
             </div>
         </div>
 
-        <!-- CAPABILITIES -->
         <span class="section-eyebrow" id="capabilities">Operational Capabilities</span>
-        <h2 class="section-title">Everything a Floor Manager Stops Doing Manually.</h2>
-        <p class="section-sub">From the moment a new agent is hired to the second their last lead is recycled, Dial Engine handles the operational layer your team currently burns hours on.</p>
+        <h2 class="section-title">A Modular Command Surface For The Entire Floor.</h2>
+        <p class="section-sub">Every operational layer your manager currently runs by hand — onboarding, lead routing, KPIs, and command — modularized into a single managed infrastructure console.</p>
 
-        <div class="bento">
-            <div class="bento-card feature-hero b-wide">
-                <div class="glow"></div>
-                <div class="tag">Provisioning Engine</div>
-                <h4>Spin up a fully-configured agent station in under a minute.</h4>
-                <p>Dial Engine clones your master CRM template, assigns active dialing credentials, and onboards the seat into your operational workspace — without per-seat licensing fees and without a manual click anywhere.</p>
+        <div class="cap-console">
+            <div class="cap-tabs" role="tablist">
+                <button class="cap-tab active" data-tab="prov" type="button">Onboarding</button>
+                <button class="cap-tab" data-tab="leads" type="button">Leads</button>
+                <button class="cap-tab" data-tab="telem" type="button">KPIs &amp; Command</button>
             </div>
 
-            <div class="bento-card b-third">
-                <div class="tag">Offboarding</div>
-                <h4>Instant Station Recall</h4>
-                <p>Revoke access, wipe the CRM, vault the seat back into the available pool. One command.</p>
+            <div class="cap-panel active" id="cap-prov">
+                <div class="bento">
+                    <div class="bento-card feature-hero layered b-wide floating">
+                        <div class="glow"></div>
+                        <div class="tag">Onboarding Engine</div>
+                        <h4>Spin up a fully-configured agent station in under a minute.</h4>
+                        <p>Dial Engine clones your master CRM template, assigns active dialing credentials, and onboards the seat into your operational workspace — without per-seat licensing fees and without a manual click anywhere.</p>
+                        <div class="metrics">
+                            <div class="metric"><div class="v">&lt;60s</div><div class="l">Provision Time</div></div>
+                            <div class="metric"><div class="v">$0</div><div class="l">Per-Seat CRM</div></div>
+                            <div class="metric"><div class="v">∞</div><div class="l">Elastic Capacity</div></div>
+                        </div>
+                    </div>
+
+                    <div class="bento-card b-tall floating delay">
+                        <div class="glow"></div>
+                        <div class="tag">Offboarding</div>
+                        <h4>Instant Station Recall</h4>
+                        <p>Revoke access, wipe the CRM, vault the seat back into the available pool — executed atomically from a single command.</p>
+                        <span class="cap-chip">One-Command Recall</span>
+                    </div>
+
+                    <div class="bento-card b-half">
+                        <div class="tag">CRM Fabric</div>
+                        <h4>Zero-Cost-Per-Seat Environments</h4>
+                        <p>Dial Engine provisions lightweight, fully-isolated CRM environments per agent — eliminating recurring per-seat licensing across the entire floor.</p>
+                    </div>
+
+                    <div class="bento-card b-half">
+                        <div class="tag">Identity</div>
+                        <h4>Credential &amp; Access Vaulting</h4>
+                        <p>Active dialing credentials, SIP identities, and workspace access are issued and reclaimed from a unified, auditable credential vault.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="bento-card b-tall">
-                <div class="glow"></div>
-                <div class="tag">Lead Routing</div>
-                <h4>Dynamic Vault Injection</h4>
-                <p>Push a precise batch into one agent or fan out a mass injection across every active terminal on the floor.</p>
-                <p style="margin-top: 14px; font-style: italic; color: #1aa86b;">Single-agent. Region-targeted. Floor-wide.</p>
+            <div class="cap-panel" id="cap-leads">
+                <div class="bento">
+                    <div class="bento-card feature-hero layered b-wide floating">
+                        <div class="glow"></div>
+                        <div class="tag">Lead Routing</div>
+                        <h4>Dynamic Vault Injection across the entire floor.</h4>
+                        <p>Push a precise batch into one agent or fan out a mass injection across every active terminal. Single-agent. Region-targeted. Floor-wide. All from one surface.</p>
+                        <div class="metrics">
+                            <div class="metric"><div class="v">1-Click</div><div class="l">Batch Injection</div></div>
+                            <div class="metric"><div class="v">Live</div><div class="l">Leads Sync</div></div>
+                            <div class="metric"><div class="v">0%</div><div class="l">Lost Leads</div></div>
+                        </div>
+                    </div>
+
+                    <div class="bento-card b-tall floating delay">
+                        <div class="glow"></div>
+                        <div class="tag">Anti-Fatigue</div>
+                        <h4>Mix &amp; Match Shuffling</h4>
+                        <p>Wipe stale active lists, reshuffle the master vault, deal fresh randomized batches in seconds — keep momentum high without manual list-pulling.</p>
+                        <span class="cap-chip">Continuous Freshness</span>
+                    </div>
+
+                    <div class="bento-card b-half">
+                        <div class="tag">Leads</div>
+                        <h4>Lead Recycling Logic</h4>
+                        <p>Reclaim partial or complete batches from inactive agents and return them cleanly to the master vault. Nothing is ever lost.</p>
+                    </div>
+
+                    <div class="bento-card b-half">
+                        <div class="tag">Accounting</div>
+                        <h4>Lead Accountability Ledger</h4>
+                        <p>Every lead in the master vault is tracked — issued, dialed, recycled, or vaulted — through an immutable accounting trail.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="bento-card b-half">
-                <div class="tag">Anti-Fatigue</div>
-                <h4>Mix &amp; Match Shuffling</h4>
-                <p>Wipe stale active lists, reshuffle the master vault, deal fresh randomized batches in seconds — keep momentum high without manual list-pulling.</p>
-            </div>
+            <div class="cap-panel" id="cap-telem">
+                <div class="bento">
+                    <div class="bento-card feature-hero layered b-wide floating">
+                        <div class="glow"></div>
+                        <div class="tag">Command Hub</div>
+                        <h4>One centralized command surface for the entire operation.</h4>
+                        <p>KPIs, leaderboards, broadcasts, and audit trails — unified into a single operational command hub running live across every active station on the floor.</p>
+                        <div class="metrics">
+                            <div class="metric"><div class="v">24/7</div><div class="l">Live KPIs</div></div>
+                            <div class="metric"><div class="v">Floor-Wide</div><div class="l">Broadcast Layer</div></div>
+                            <div class="metric"><div class="v">Immutable</div><div class="l">Audit Ledger</div></div>
+                        </div>
+                    </div>
 
-            <div class="bento-card b-half">
-                <div class="tag">Inventory</div>
-                <h4>Lead Recycling Logic</h4>
-                <p>Reclaim partial or complete batches from inactive agents and return them cleanly to the master vault. Nothing is ever lost.</p>
-            </div>
+                    <div class="bento-card b-tall floating delay">
+                        <div class="glow"></div>
+                        <div class="tag">KPIs</div>
+                        <h4>Immutable Audit Ledger</h4>
+                        <p>Vault counts, telephony status, transfer records — pulled live from a tamper-proof source of truth that mirrors every operational event.</p>
+                        <span class="cap-chip">Tamper-Proof</span>
+                    </div>
 
-            <div class="bento-card b-third">
-                <div class="tag">Telemetry</div>
-                <h4>Immutable Audit Ledger</h4>
-                <p>Vault counts, telephony status, transfer records — pulled live from a tamper-proof source of truth.</p>
-            </div>
+                    <div class="bento-card b-half">
+                        <div class="tag">Gamification</div>
+                        <h4>Automated Leaderboards</h4>
+                        <p>Live dial &amp; win tracking. Daily and historic boards broadcast to the floor or DM'd to management — fully automated.</p>
+                    </div>
 
-            <div class="bento-card b-third">
-                <div class="tag">Gamification</div>
-                <h4>Automated Leaderboards</h4>
-                <p>Live dial &amp; win tracking. Daily and historic boards broadcast to the floor or DM'd to management.</p>
-            </div>
-
-            <div class="bento-card b-third">
-                <div class="tag">Command</div>
-                <h4>Mass Floor Broadcasts</h4>
-                <p>Bypass group chats. Privately push critical updates to every active dialer at once.</p>
+                    <div class="bento-card b-half">
+                        <div class="tag">Command</div>
+                        <h4>Mass Floor Broadcasts</h4>
+                        <p>Bypass group chats. Privately push critical updates to every active dialer at once, straight from the command surface.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- HOW IT RUNS PIPELINE -->
         <span class="section-eyebrow" id="pipeline">Operational Flow</span>
         <h2 class="section-title">A Floor That Runs Itself End-to-End.</h2>
         <p class="section-sub">Four operational layers, one infrastructure surface. Every layer is managed, monitored, and continuously optimized by the engineering team.</p>
@@ -640,7 +774,7 @@
                 <div class="pipe-step">
                     <span class="num">3</span>
                     <h5>Operate</h5>
-                    <p>Telemetry, leaderboards, and floor-wide broadcasts run continuously from the central command surface.</p>
+                    <p>KPIs, leaderboards, and floor-wide broadcasts run continuously from the central command surface.</p>
                 </div>
                 <div class="pipe-step">
                     <span class="num">4</span>
@@ -650,7 +784,6 @@
             </div>
         </div>
 
-        <!-- PRICING -->
         <span class="section-eyebrow" id="pricing">Licensing &amp; Infrastructure</span>
         <h2 class="section-title">Managed Infrastructure. Priced By Capacity.</h2>
         <p class="section-sub">Two operational tiers built around real floor size. You're not licensing software — you're commissioning a managed operational stack.</p>
@@ -681,77 +814,84 @@
                     <li>CRM environment provisioned to your floor</li>
                     <li>Operational workspace &amp; command surface</li>
                     <li>Lead vault infrastructure &amp; routing logic</li>
-                    <li>Live telemetry, leaderboards &amp; broadcasts</li>
+                    <li>Live KPIs, leaderboards &amp; broadcasts</li>
                     <li>SIP routing &amp; dialing bridge integration</li>
                     <li>Ongoing maintenance, monitoring &amp; engineering support</li>
                 </ul>
 
-                <a href="#contact" class="btn btn-primary">Start Onboarding</a>
+                <a href="#contact" class="btn btn-primary">Request Deployment</a>
             </div>
 
             <div class="price-card enterprise">
-                <div class="price-badge">Featured</div>
-                <h3>Enterprise Scale</h3>
-                <div class="price-tagline">Custom Infrastructure · 150–300 Agents</div>
+                <div class="price-badge">Enterprise Bundle</div>
+                <h3>Enterprise Stack</h3>
+                <div class="price-tagline">Full Managed Enterprise Infrastructure</div>
 
                 <div class="price-figures">
                     <div class="fig">
-                        <div class="amount">Custom</div>
-                        <div class="lbl">Deployment Quote</div>
+                        <div class="amount">$6,000</div>
+                        <div class="lbl">Deployment</div>
                     </div>
                     <div class="fig">
-                        <div class="amount">Custom</div>
-                        <div class="lbl">Managed Infrastructure</div>
+                        <div class="amount">$5,000<small>/mo</small></div>
+                        <div class="lbl">Managed Enterprise Stack</div>
                     </div>
                 </div>
 
                 <div class="seat-info">
-                    Built for multi-room operations: <strong>150–300+ concurrent seats</strong>, multi-region routing, dedicated engineering response.
+                    Built for multi-room operations — <strong>elastic, dynamically scalable seat capacity</strong>, multi-region routing, and dedicated engineering response.
                 </div>
 
                 <ul class="price-list">
                     <li>Full Dial Engine deployment at enterprise capacity</li>
                     <li>Custom operational configuration &amp; routing stack</li>
                     <li>Dedicated infrastructure environment</li>
-                    <li>Multi-room &amp; multi-region telemetry</li>
+                    <li>Multi-room &amp; multi-region KPIs</li>
                     <li>Priority engineering &amp; response SLA</li>
                     <li>Advanced lead vault segmentation &amp; logic</li>
-                    <li>Optional bundled PBX transfer infrastructure</li>
+                    <li>Optional bundled Managed PBX layer</li>
                 </ul>
 
-                <a href="#contact" class="btn btn-dark">Request Enterprise Quote</a>
+                <a href="#contact" class="btn btn-dark">Request Deployment</a>
             </div>
         </div>
 
-        <!-- ADDON -->
+        <div style="text-align:center; margin-top: 35px;">
+            <span style="display: inline-block; padding: 14px 28px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; font-size: 0.95rem; font-weight: 700; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.5); letter-spacing: 1px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+                ALL LICENSING AND DEPLOYMENTS INVOICED IN MOROCCAN DIRHAM (MAD)
+            </span>
+        </div>
+
         <div class="addon-panel">
             <div>
-                <span class="addon-tag">Optional Add-On · Telecom Layer</span>
+                <span class="addon-tag">Optional Add-On · Managed Telecom Layer</span>
                 <h3>Managed PBX Infrastructure</h3>
-                <p>A dedicated PBX server for telecommunications and live agent-to-closer transfers. Operates as an independent telecom layer that plugs directly into Dial Engine — built for floors running warm transfers, internal extensions, and structured call handling.</p>
+                <p>A dedicated, fully managed PBX server for telecommunications and live agent-to-closer transfers. Continuous maintenance, monitoring, and engineering support included — this is managed voice infrastructure, not a one-time unmanaged install.</p>
                 <ul class="addon-features">
                     <li>Warm transfer infrastructure</li>
                     <li>Internal extension routing</li>
                     <li>Advanced call queue systems</li>
                     <li>Multi-tier routing architecture</li>
-                    <li>Dedicated PBX deployment</li>
-                    <li>Call handling &amp; recording layer</li>
+                    <li>Ongoing PBX monitoring &amp; support</li>
                 </ul>
             </div>
             <div class="addon-price">
                 <div class="amount">$3,000</div>
-                <div class="lbl">One-Time Integration</div>
+                <div class="lbl">Deployment</div>
+                <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.2);">
+                    <div class="amount" style="font-size: 2rem;">$2,000<small style="font-size: 0.75rem; color: #b8ffd9;">/mo</small></div>
+                    <div class="lbl">Managed Voice Infrastructure</div>
+                </div>
                 <div style="margin-top: 20px;">
-                    <a href="#contact" class="btn btn-secondary" style="padding: 10px 22px; font-size: 0.9rem;">Add to Deployment</a>
+                    <a href="#contact" class="btn btn-secondary" style="padding: 10px 22px; font-size: 0.9rem;">Request Deployment</a>
                 </div>
             </div>
         </div>
 
-        <!-- VALUE COMPARISON -->
         <div class="value-panel">
             <span class="section-eyebrow" style="color: #1aa86b;">The Operational Math</span>
             <h2 class="section-title" style="color: #003366; text-shadow: 0 1px 1px #fff; font-size: 2rem;">What a 50-Seat Floor Stops Paying For.</h2>
-            <p class="section-sub" style="color: #1a2638; text-shadow: none;">Per-seat CRMs, manual provisioning hours, fragmented telemetry, and floor-management overhead — replaced by one managed infrastructure layer.</p>
+            <p class="section-sub" style="color: #1a2638; text-shadow: none;">Per-seat CRMs, manual onboarding hours, fragmented KPIs, and floor-management overhead — replaced by one managed infrastructure layer.</p>
             <div class="value-grid">
                 <div class="value-col bad">
                     <h4>Without Dial Engine</h4>
@@ -759,7 +899,7 @@
                         <li>$75–$150 per seat / mo in CRM licensing</li>
                         <li>Hours of manual onboarding per new hire</li>
                         <li>Lead lists managed in spreadsheets and chat</li>
-                        <li>No unified telemetry or audit trail</li>
+                        <li>No unified KPI feed or audit trail</li>
                         <li>Floor manager pulled into operational work daily</li>
                         <li>Stale lists, fatigued agents, lost inventory</li>
                     </ul>
@@ -768,9 +908,9 @@
                     <h4>With Dial Engine</h4>
                     <ul>
                         <li>$0 per-seat CRM cost — unlimited within tier</li>
-                        <li>Sub-minute provisioning, fully automated</li>
+                        <li>Sub-minute onboarding, fully automated</li>
                         <li>Centralized vault with dynamic routing</li>
-                        <li>Immutable live telemetry &amp; leaderboards</li>
+                        <li>Immutable live KPIs &amp; leaderboards</li>
                         <li>Floor manager runs the room, not the spreadsheet</li>
                         <li>Continuous recycling — nothing ever lost</li>
                     </ul>
@@ -778,10 +918,9 @@
             </div>
         </div>
 
-        <!-- CONTACT -->
         <div class="contact-panel" id="contact">
             <span class="section-eyebrow" style="color: #1aa86b;">Request Access</span>
-            <h3>Request Deployement.</h3>
+            <h3>Request Deployment.</h3>
             <p>Dial Engine is deployed on a per-floor basis. Submit your operational details below and the team will follow up to scope deployment, capacity, and timeline.</p>
 
             <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Request Sent';">
@@ -790,16 +929,15 @@
                 <input type="email" placeholder="Work Email" required class="full">
                 <select required>
                     <option value="">Floor Size</option>
-                    <option>Under 50 agents</option>
-                    <option>50–150 agents</option>
-                    <option>150–300 agents</option>
-                    <option>300+ agents</option>
+                    <option>50 Agents</option>
+                    <option>100–150 Agents</option>
+                    <option>200+ Agents</option>
                 </select>
                 <select required>
                     <option value="">Tier of Interest</option>
                     <option>Dial Engine — Core Infrastructure</option>
                     <option>Enterprise Scale</option>
-                    <option>Add Managed PBX Infrastructure</option>
+                    <option>PBX Infrastructure</option>
                 </select>
                 <textarea placeholder="Briefly describe your current operation, what you're running today, and what you need solved." class="full" required></textarea>
                 <button type="submit" class="btn btn-primary">Submit Request</button>
@@ -809,9 +947,37 @@
     </div>
 
     <footer>
-        &copy; 2026 Mohamed Yahya Adilla. All Rights Reserved. Dial Engine™ is a proprietary trademark.<br>
+        <div style="font-size: 0.85rem; letter-spacing: 0.18em; color: rgba(255,255,255,0.85); text-transform: uppercase; margin-bottom: 6px;">ZLF Systems SARL · Dial Engine™</div>
+        &copy; 2026 ZLF Systems SARL — Mohamed Yahya Adilla. All Rights Reserved. Dial Engine™ is a proprietary trademark of ZLF Systems SARL.<br>
         Unauthorized reproduction, distribution, or reverse-engineering is strictly prohibited under international copyright law.
     </footer>
 
+    <script>
+        // Capability console tab switching
+        document.querySelectorAll('.cap-tab').forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                var key = tab.getAttribute('data-tab');
+                document.querySelectorAll('.cap-tab').forEach(function(t){ t.classList.remove('active'); });
+                document.querySelectorAll('.cap-panel').forEach(function(p){ p.classList.remove('active'); });
+                tab.classList.add('active');
+                var panel = document.getElementById('cap-' + key);
+                if (panel) panel.classList.add('active');
+            });
+        });
+
+        // Robust smooth-scroll for all in-page anchors (works on mobile + desktop)
+        document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var href = link.getAttribute('href');
+                if (!href || href === '#') return;
+                var target = document.querySelector(href);
+                if (!target) return;
+                e.preventDefault();
+                var top = target.getBoundingClientRect().top + window.pageYOffset - 90;
+                window.scrollTo({ top: top, behavior: 'smooth' });
+                history.replaceState(null, '', href);
+            });
+        });
+    </script>
 </body>
 </html>
