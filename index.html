@@ -923,23 +923,23 @@
             <h3>Request Deployment.</h3>
             <p>Dial Engine is deployed on a per-floor basis. Submit your operational details below and the team will follow up to scope deployment, capacity, and timeline.</p>
 
-            <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Request Sent';">
-                <input type="text" placeholder="Full Name" required>
-                <input type="text" placeholder="Company / Operation Name" required>
-                <input type="email" placeholder="Work Email" required class="full">
-                <select required>
+            <form class="contact-form" id="deployment-form">
+                <input type="text" id="req-name" placeholder="Full Name" required>
+                <input type="text" id="req-company" placeholder="Company / Operation Name" required>
+                <input type="email" id="req-email" placeholder="Work Email" required class="full">
+                <select id="req-size" required>
                     <option value="">Floor Size</option>
                     <option>50 Agents</option>
                     <option>100–150 Agents</option>
                     <option>200+ Agents</option>
                 </select>
-                <select required>
+                <select id="req-tier" required>
                     <option value="">Tier of Interest</option>
                     <option>Dial Engine — Core Infrastructure</option>
                     <option>Enterprise Bundle (Dial Engine + PBX)</option>
                     <option>Standalone PBX Infrastructure</option>
                 </select>
-                <textarea placeholder="Briefly describe your current operation, what you're running today, and what you need solved." class="full" required></textarea>
+                <textarea id="req-msg" placeholder="Briefly describe your current operation, what you're running today, and what you need solved." class="full" required></textarea>
                 <button type="submit" class="btn btn-primary">Submit Request</button>
             </form>
         </div>
@@ -977,6 +977,33 @@
                 window.scrollTo({ top: top, behavior: 'smooth' });
                 history.replaceState(null, '', href);
             });
+        });
+
+        // Custom Mailto Workflow for Form Submission
+        document.getElementById('deployment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Gather inputs
+            var name = document.getElementById('req-name').value;
+            var company = document.getElementById('req-company').value;
+            var email = document.getElementById('req-email').value;
+            var size = document.getElementById('req-size').value;
+            var tier = document.getElementById('req-tier').value;
+            var msg = document.getElementById('req-msg').value;
+
+            // Construct subject and body
+            var subject = encodeURIComponent('DIAL ENGINE Deployment Request — ' + size);
+            var body = encodeURIComponent(
+                'Full Name: ' + name + '\n' +
+                'Company: ' + company + '\n' +
+                'Email: ' + email + '\n' +
+                'Floor Size: ' + size + '\n' +
+                'Tier: ' + tier + '\n\n' +
+                'Message:\n' + msg
+            );
+
+            // Open default mail client
+            window.location.href = 'mailto:yahyaadillapro@gmail.com?subject=' + subject + '&body=' + body;
         });
     </script>
 </body>
